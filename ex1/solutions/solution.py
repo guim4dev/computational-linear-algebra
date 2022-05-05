@@ -1,4 +1,4 @@
-class Decomposition:
+class Solution:
   can_calc_determinant = True
 
   def __init__(self, A, B, order, calc_determinant, **kwargs):
@@ -12,7 +12,7 @@ class Decomposition:
   def solve(self):
     raise RuntimeError('Not implemented')
 
-class IterativeDecomposition(Decomposition):
+class IterativeSolution(Solution):
   can_calc_determinant = False
 
   def __init__(self, A, B, order, calc_determinant, maxTolerance):
