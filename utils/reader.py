@@ -9,7 +9,7 @@ def getMatrixA(file_path):
       new_line = [int(x) for x in new_line]
       matrixA.append(new_line)
 
-  return (np.matrix(matrixA))
+  return np.matrix(matrixA)
 
 def getVectorB(file_path):
   vectorB = []
@@ -17,4 +17,4 @@ def getVectorB(file_path):
     lines = file.readlines()
     vectorB = [int(x) for x in lines]
 
-  return (np.array(vectorB))
+  return np.array(vectorB)

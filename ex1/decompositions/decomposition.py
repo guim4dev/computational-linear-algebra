@@ -1,5 +1,5 @@
 class Decomposition:
-  can_calc_determinant = False
+  can_calc_determinant = True
 
   def __init__(self, A, B, order, calc_determinant, **kwargs):
     self.A = A
@@ -13,6 +13,8 @@ class Decomposition:
     raise RuntimeError('Not implemented')
 
 class IterativeDecomposition(Decomposition):
-   def __init__(self, A, B, order, calc_determinant, maxTolerance):
+  can_calc_determinant = False
+
+  def __init__(self, A, B, order, calc_determinant, maxTolerance):
     self.maxTolerance = maxTolerance
     super().__init__(A, B, order, calc_determinant)
