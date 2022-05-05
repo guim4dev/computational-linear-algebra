@@ -50,27 +50,27 @@ def get_auxiliar_matrix(matrix, index):
 
 
 def inverse_auxiliar_function(matrix, i, j):
-    return [row[:j] + row[j+1:] for row in (matrix[:i]+matrix[i+1:])]
+    return np.array([row[:j] + row[j+1:] for row in (matrix[:i]+matrix[i+1:])])
 
 
 def get_transposed_matrix(matrix):
-    answer = [[0.0]*len(matrix) for i in range(len(matrix[0]))]
+    result = np.array([[0.0]*len(matrix) for _ in range(len(matrix[0]))])
 
     for i in range(len(matrix)):
         for j in range(len(matrix[0])):
-            answer[j][i] = matrix[i][j]
+            result[j][i] = matrix[i][j]
 
-    return answer
+    return result
 
 
 def get_inverse_matrix(matrix):
-    cofactors = []
+    cofactors = np.array()
     determinant = calc_determinant(matrix)
     if(determinant == 0):
         return 0
 
     for r in range(len(matrix)):
-        cofactorRow = []
+        cofactorRow = np.array()
 
         for c in range(len(matrix)):
             minor = inverse_auxiliar_function(matrix, r, c)
@@ -90,12 +90,7 @@ def get_inverse_matrix(matrix):
 
 def calc_determinant(matrix):
     number_of_rows = len(matrix)
-    number_of_columns = len(matrix[0])
-
     result = 0
-
-    if(number_of_rows != number_of_columns):
-        return "Não é possível calcular a determinante de uma matriz não quadrada"
 
     if(number_of_rows == 1):
         return matrix[0][0]

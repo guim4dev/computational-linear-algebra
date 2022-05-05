@@ -3,13 +3,9 @@ from utils.matrix import calc_determinant
 import copy
 
 class LUSolution(Solution):
-  def solve(self):
+  def decompose(self):
     number_of_rows = len(self.A)
     number_of_columns = len(self.A[0])
-
-    if(number_of_rows != number_of_columns):
-      return "Error"
-
     result = copy.deepcopy(self.A)
 
     for k in range(number_of_rows):
@@ -19,9 +15,12 @@ class LUSolution(Solution):
       for j in range(k+1, number_of_columns):
         for i in range(k+1, number_of_columns):
           result[i][j] = float(result[i][j]-result[i][k]*result[k][j])
+    return result
 
+  def solve(self):
     if self.calc_determinant:
-      determinant = calc_determinant(result)
+      determinant = calc_determinant(self.A) # Mudar para usar as propriedades da matriz LU
       print('Determinante:', determinant)
 
-    print(result.view())
+    decomposed = self.decompose()
+    
