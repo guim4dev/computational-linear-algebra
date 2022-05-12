@@ -25,6 +25,7 @@ def run():
   if type(Solution) == IterativeSolution:
     max_tolerance = float(input('Valor de tolerância máxima:'))
 
+  output_file_path = input('Arquivo de saída: ')
   solution = Solution(
     A=matrix_A,
     B=vector_B,
@@ -32,3 +33,9 @@ def run():
     calc_determinant=idet>0,
     max_tolerance=max_tolerance).solve()
   print(solution)
+
+  with open(output_file_path, 'w') as output_file:
+    output_file.write(f"Vetor Solução: {solution['vector']}\n")
+    output_file.write(f"Determinante: {solution['determinant']}\n")
+  
+  print("Arquivo de saída gerado com sucesso!")

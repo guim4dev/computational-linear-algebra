@@ -20,12 +20,16 @@ class LUSolution(Solution):
     return result
 
   def solve(self):
+    determinant = None
     if self.calc_determinant:
       determinant = calc_determinant(self.A) # Mudar para usar as propriedades da matriz LU
       print('Determinante:', determinant)
 
     lu_matrix = self.decompose()
     matrix_y = forward_substitution(lu_matrix, self.B)
-    return backward_substitution(transpose_matrix(lu_matrix), matrix_y)
+    return {
+      'vector': backward_substitution(transpose_matrix(lu_matrix), matrix_y),
+      'determinant': determinant
+    }
 
     
