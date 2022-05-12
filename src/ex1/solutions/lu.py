@@ -1,5 +1,5 @@
 from ex1.solutions.solution import Solution
-from utils.matrix import calc_determinant
+from utils.matrix import calc_determinant, forward_substitution, backward_substitution, transpose_matrix
 import copy
 
 class LUSolution(Solution):
@@ -9,9 +9,11 @@ class LUSolution(Solution):
     result = copy.deepcopy(self.A)
 
     for k in range(number_of_rows):
+      # parte L da matriz
       for i in range(k+1, number_of_rows):
         result[i][k] = float(result[i][k]/result[k][k])
 
+      # parte U da matriz
       for j in range(k+1, number_of_columns):
         for i in range(k+1, number_of_columns):
           result[i][j] = float(result[i][j]-result[i][k]*result[k][j])
@@ -22,5 +24,8 @@ class LUSolution(Solution):
       determinant = calc_determinant(self.A) # Mudar para usar as propriedades da matriz LU
       print('Determinante:', determinant)
 
-    decomposed = self.decompose()
+    lu_matrix = self.decompose()
+    matrix_y = forward_substitution(lu_matrix, self.b)
+    return backward_substitution(transpose_matrix(lu_matrix), matrix_y)
+
     

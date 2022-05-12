@@ -1,12 +1,11 @@
 import sys 
 sys.path.append('..')
 from utils.reader import getMatrixA, getVectorB
-from solutions.cholesky import CholeskySolution
-from solutions.gauss_seidel import GaussSeidelSolution
-from solutions.jacobi import JacobiSolution
-from solutions.lu import LUSolution
+from ex1.solutions.cholesky import CholeskySolution
+from ex1.solutions.gauss_seidel import GaussSeidelSolution
+from ex1.solutions.jacobi import JacobiSolution
+from ex1.solutions.lu import LUSolution
 from ex1.solutions.solution import IterativeSolution
-
 
 icod_map = {
   1: LUSolution,
@@ -29,3 +28,4 @@ if __name__ == '__main__':
     max_tolerance = float(input('Valor de tolerância máxima:'))
 
   new_A = Solution.solve(order, idet, matrix_A, vector_B, max_tolerance)
+  print(new_A)

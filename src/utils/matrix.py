@@ -53,7 +53,7 @@ def inverse_auxiliar_function(matrix, i, j):
     return np.array([row[:j] + row[j+1:] for row in (matrix[:i]+matrix[i+1:])])
 
 
-def get_transposed_matrix(matrix):
+def transpose_matrix(matrix):
     result = np.array([[0.0]*len(matrix) for _ in range(len(matrix[0]))])
 
     for i in range(len(matrix)):
@@ -63,7 +63,7 @@ def get_transposed_matrix(matrix):
     return result
 
 
-def get_inverse_matrix(matrix):
+def inverse_matrix(matrix):
     cofactors = np.array()
     determinant = calc_determinant(matrix)
     if(determinant == 0):
@@ -78,7 +78,7 @@ def get_inverse_matrix(matrix):
 
         cofactors.append(cofactorRow)
 
-    cofactors = get_transposed_matrix(cofactors)
+    cofactors = transpose_matrix(cofactors)
 
     for r in range(len(cofactors)):
         for c in range(len(cofactors)):
@@ -87,6 +87,24 @@ def get_inverse_matrix(matrix):
 
     return cofactors
 
+
+def forward_substitution(matrix_l, matrix_b, control=False):
+    number_of_rows = len(matrix_l)
+    matrix_y = [0 for i in range(number_of_rows)]
+    matrix_y[0] = matrix_b[0]
+    if(control): matrix_y[0] = matrix_y[0]/matrix_l[0][0]
+
+    for i in range(1, number_of_rows):
+        summation = matrix_b[i]
+        for j in range(i):
+            summation -= matrix_l[i][j]*matrix_y[j]
+
+        if(not control):
+            matrix_y[i] = summation
+        else:
+            matrix_y[i] = summation/matrix_l[i][i]
+
+    return matrix_y
 
 def calc_determinant(matrix):
     number_of_rows = len(matrix)
