@@ -5,7 +5,7 @@ import math
 def multiply_matrix_vector(matrix_a, vector):
     number_of_columns_A = len(matrix_a)
     number_of_columns_vector = range(len(vector))
-    result = np.array([0.0 for _ in range(number_of_columns_A)])
+    result = [0.0 for _ in range(number_of_columns_A)]
 
     for i in range(number_of_columns_A):
         sum = 0
@@ -20,7 +20,7 @@ def multiply_matrix_vector(matrix_a, vector):
 
 def multiply_matrix_scalar(matrix_a, scalar):
     n = len(matrix_a)
-    result = np.array([[0.0 for _ in range(n)] for _ in range(n)])
+    result = [[0.0 for _ in range(n)] for _ in range(n)]
 
     for j in range(n):
         for i in range(n):
@@ -31,8 +31,7 @@ def multiply_matrix_scalar(matrix_a, scalar):
 
 def multiply_matrixes(matrix_a, matrix_b):
     number_of_rows = len(matrix_a)
-    result = np.array([[0.0 for _ in range(number_of_rows)]
-                      for _ in range(number_of_rows)])
+    result = [[0.0 for _ in range(number_of_rows)] for _ in range(number_of_rows)]
     for i in range(len(matrix_a)):
         for j in range(len(matrix_b[0])):
             for k in range(len(matrix_b)):
@@ -50,11 +49,11 @@ def get_auxiliar_matrix(matrix, index):
 
 
 def inverse_auxiliar_function(matrix, i, j):
-    return np.array([row[:j] + row[j+1:] for row in (matrix[:i]+matrix[i+1:])])
+    return [row[:j] + row[j+1:] for row in (matrix[:i]+matrix[i+1:])]
 
 
 def transpose_matrix(matrix):
-    result = np.array([[0.0]*len(matrix) for _ in range(len(matrix[0]))])
+    result = [[0.0]*len(matrix) for _ in range(len(matrix[0]))]
 
     for i in range(len(matrix)):
         for j in range(len(matrix[0])):
@@ -64,13 +63,13 @@ def transpose_matrix(matrix):
 
 
 def inverse_matrix(matrix):
-    cofactors = np.array()
+    cofactors = []
     determinant = calc_determinant(matrix)
     if(determinant == 0):
         return 0
 
     for r in range(len(matrix)):
-        cofactorRow = np.array()
+        cofactorRow = []
 
         for c in range(len(matrix)):
             minor = inverse_auxiliar_function(matrix, r, c)

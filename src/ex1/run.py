@@ -1,5 +1,3 @@
-import sys 
-sys.path.append('..')
 from src.utils.reader import getMatrixA, getVectorB
 from src.ex1.solutions.cholesky import CholeskySolution
 from src.ex1.solutions.gauss_seidel import GaussSeidelSolution
@@ -27,5 +25,10 @@ def run():
   if type(Solution) == IterativeSolution:
     max_tolerance = float(input('Valor de tolerância máxima:'))
 
-  new_A = Solution.solve(order, idet, matrix_A, vector_B, max_tolerance)
-  print(new_A)
+  solution = Solution(
+    A=matrix_A,
+    B=vector_B,
+    order=order,
+    calc_determinant=idet>0,
+    max_tolerance=max_tolerance).solve()
+  print(solution)

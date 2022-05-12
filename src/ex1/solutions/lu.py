@@ -25,7 +25,7 @@ class LUSolution(Solution):
       print('Determinante:', determinant)
 
     lu_matrix = self.decompose()
-    matrix_y = forward_substitution(lu_matrix, self.b)
+    matrix_y = forward_substitution(lu_matrix, self.B)
     return backward_substitution(transpose_matrix(lu_matrix), matrix_y)
 
     
