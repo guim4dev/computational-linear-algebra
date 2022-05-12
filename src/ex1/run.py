@@ -1,11 +1,11 @@
 import sys 
 sys.path.append('..')
-from utils.reader import getMatrixA, getVectorB
-from ex1.solutions.cholesky import CholeskySolution
-from ex1.solutions.gauss_seidel import GaussSeidelSolution
-from ex1.solutions.jacobi import JacobiSolution
-from ex1.solutions.lu import LUSolution
-from ex1.solutions.solution import IterativeSolution
+from src.utils.reader import getMatrixA, getVectorB
+from src.ex1.solutions.cholesky import CholeskySolution
+from src.ex1.solutions.gauss_seidel import GaussSeidelSolution
+from src.ex1.solutions.jacobi import JacobiSolution
+from src.ex1.solutions.lu import LUSolution
+from src.ex1.solutions.solution import IterativeSolution
 
 icod_map = {
   1: LUSolution,
@@ -14,7 +14,7 @@ icod_map = {
   4: GaussSeidelSolution
 }
 
-if __name__ == '__main__':
+def run():
   order = int(input('Ordem do sistema de equações: ')) 
   matrix_A_file_path = input('Arquivo de entrada da matriz A: ')
   matrix_A = getMatrixA(matrix_A_file_path)

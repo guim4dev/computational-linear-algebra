@@ -1,5 +1,5 @@
-from ex1.solutions.solution import Solution
-from utils.matrix import transpose_matrix
+from src.ex1.solutions.solution import Solution
+from src.utils.matrix import transpose_matrix
 
 class CholeskySolution(Solution):
   def decompose(self):

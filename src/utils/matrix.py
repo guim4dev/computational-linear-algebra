@@ -106,6 +106,22 @@ def forward_substitution(matrix_l, matrix_b, control=False):
 
     return matrix_y
 
+def backward_substitution(matrix_u, matrix_y):
+    number_of_rows = len(matrix_u)
+    matrix_x = [0 for i in range(number_of_rows)]
+
+    matrix_x[number_of_rows-1] = matrix_y[number_of_rows-1] / \
+        matrix_u[number_of_rows-1][number_of_rows-1]
+
+    for i in range(number_of_rows-2, -1, -1):
+        summation = matrix_y[i]
+        for j in range(i+1, number_of_rows):
+            summation -= matrix_u[i][j]*matrix_x[j]
+
+        matrix_x[i] = summation/float(matrix_u[i][i])
+
+    return matrix_x
+
 def calc_determinant(matrix):
     number_of_rows = len(matrix)
     result = 0

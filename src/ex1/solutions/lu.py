@@ -1,5 +1,5 @@
-from ex1.solutions.solution import Solution
-from utils.matrix import calc_determinant, forward_substitution, backward_substitution, transpose_matrix
+from src.ex1.solutions.solution import Solution
+from src.utils.matrix import calc_determinant, forward_substitution, backward_substitution, transpose_matrix
 import copy
 
 class LUSolution(Solution):
