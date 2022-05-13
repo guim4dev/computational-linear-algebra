@@ -14,7 +14,7 @@ def run():
   matrix_A = getMatrixA(matrix_A_file_path)
   icod = int(input('ICOD: '))
   idet = int(input('IDET: '))
-  max_tolerance = float(input('Valor de tolerância máxima:'))
+  maxTolerance = float(input('Valor de tolerância máxima:'))
 
   Solution = icod_map[icod]
 
@@ -22,6 +22,14 @@ def run():
     A=matrix_A,
     order=order,
     calc_determinant=idet>0,
-    max_tolerance=max_tolerance).solve()
+    maxTolerance = maxTolerance).solve()
+  
+  print(solution)
 
   output_file_path = input('Arquivo de saída: ')
+
+  with open(output_file_path, 'w') as output_file:
+    output_file.write(f"Autovetor: {solution['vector']}\n")
+    output_file.write(f"Autovalor: {solution['eigenvalue']}\n")
+    output_file.write(f"Determinante: {solution['determinant']}")
+  print("Arquivo de saída gerado com sucesso!")

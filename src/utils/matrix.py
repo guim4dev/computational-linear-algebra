@@ -1,11 +1,11 @@
 import copy
 
 def multiply_matrix_vector(matrix_a, vector):
-    number_of_columns_A = len(matrix_a)
+    number_of_rows_A = len(matrix_a)
     number_of_columns_vector = range(len(vector))
-    result = [0.0 for _ in range(number_of_columns_A)]
+    result = [0.0 for _ in range(number_of_rows_A)]
 
-    for i in range(number_of_columns_A):
+    for i in range(number_of_rows_A):
         sum = 0
 
         for j in number_of_columns_vector:
