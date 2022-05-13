@@ -7,12 +7,9 @@ def multiply_matrix_vector(matrix_a, vector):
 
     for i in range(number_of_rows_A):
         sum = 0
-
         for j in number_of_columns_vector:
             sum += matrix_a[i][j]*vector[j]
-
-        result[j] = sum
-
+        result[i] = sum
     return result
 
 
