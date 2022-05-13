@@ -1,5 +1,4 @@
 import copy
-import math
 
 def multiply_matrix_vector(matrix_a, vector):
     number_of_columns_A = len(matrix_a)
@@ -90,23 +89,22 @@ def forward_substitution(matrix_l, matrix_b, control=False):
     number_of_rows = len(matrix_l)
     matrix_y = [0 for i in range(number_of_rows)]
     matrix_y[0] = matrix_b[0]
-    if(control): matrix_y[0] = matrix_y[0]/matrix_l[0][0]
+    if control: matrix_y[0] = matrix_y[0]/matrix_l[0][0]
 
     for i in range(1, number_of_rows):
         summation = matrix_b[i]
         for j in range(i):
             summation -= matrix_l[i][j]*matrix_y[j]
 
-        if(not control):
-            matrix_y[i] = summation
-        else:
-            matrix_y[i] = summation/matrix_l[i][i]
+        matrix_y[i] = summation
+        if control: matrix_y[i] = matrix_y[i]/matrix_l[i][i]
 
     return matrix_y
 
+
 def backward_substitution(matrix_u, matrix_y):
     number_of_rows = len(matrix_u)
-    matrix_x = [0 for i in range(number_of_rows)]
+    matrix_x = [0 for _ in range(number_of_rows)]
 
     matrix_x[number_of_rows-1] = matrix_y[number_of_rows-1] / \
         matrix_u[number_of_rows-1][number_of_rows-1]
@@ -115,10 +113,10 @@ def backward_substitution(matrix_u, matrix_y):
         summation = matrix_y[i]
         for j in range(i+1, number_of_rows):
             summation -= matrix_u[i][j]*matrix_x[j]
-
         matrix_x[i] = summation/float(matrix_u[i][i])
 
     return matrix_x
+
 
 def calc_determinant(matrix):
     number_of_rows = len(matrix)
@@ -131,4 +129,38 @@ def calc_determinant(matrix):
         result += matrix[i][0]*((-1)**i) * \
             calc_determinant(get_auxiliar_matrix(matrix, i))
 
+    return result
+
+
+def positive_definite(matrix):
+    return is_simetric(matrix) and follows_sylvesters_criterion(matrix)
+
+
+def is_simetric(matrix):
+    number_of_rows = len(matrix)
+    number_of_columns = len(matrix[0])
+
+    if(number_of_rows != number_of_columns):
+        return -1
+
+    for i in range(len(matrix)):
+        for j in range(len(matrix[i])):
+            if(matrix[i][j] != matrix[j][i]):
+                return False
+
+    return True
+
+
+def follows_sylvesters_criterion(matrix):
+    for i in range(len(matrix)):
+        secondary = get_main_minor(matrix, i)
+        if(calc_determinant(secondary) <= 0):
+            return False
+
+    return True
+
+
+def get_main_minor(matrix, index):
+    result = [[matrix[row][column]
+               for row in range(index + 1)] for column in range(index + 1)]
     return result

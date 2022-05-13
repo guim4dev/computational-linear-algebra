@@ -26,6 +26,10 @@ def run():
     max_tolerance = float(input('Valor de tolerância máxima:'))
 
   output_file_path = input('Arquivo de saída: ')
+  
+  print(f"A: {matrix_A}")
+  print(f"B: {vector_B}")
+
   solution = Solution(
     A=matrix_A,
     B=vector_B,
