@@ -1,4 +1,5 @@
 import copy
+import math
 
 def multiply_matrix_vector(matrix_a, vector):
     number_of_rows_A = len(matrix_a)
@@ -161,3 +162,40 @@ def get_main_minor(matrix, index):
     result = [[matrix[row][column]
                for row in range(index + 1)] for column in range(index + 1)]
     return result
+
+def get_biggest_element_not_in_diagonal(matrix):
+    n = len(matrix)
+    if (n != len(matrix[0])):
+        raise Exception("Matriz tem que ser quadrada")
+    value = -math.inf
+    for i in range(n):
+        for j in range(n):
+            if (i!=j and abs(matrix[i][j]) > value):
+                value = abs(matrix[i][j])
+                index = (i,j)
+    return index
+
+def calcute_phi(matrix, index):
+    den = (matrix[index[0]][index[0]] -
+                   matrix[index[1]][index[1]])
+
+    if(matrix[index[0]][index[0]] == matrix[index[1]][index[1]]):
+        return math.pi/4
+    else:
+        return math.atan(2*matrix[index[0]][index[1]]/den)/2
+ 
+
+def calculate_p_matrix(matrix, index):
+    n = len(matrix)
+    phi = 0
+
+    P = [[float(i == j) for j in range(n)] for i in range(n)]
+    
+    phi = calcute_phi(matrix, index)
+
+    P[index[0]][index[0]] = math.cos(phi)
+    P[index[1]][index[1]] = math.cos(phi)
+    P[index[0]][index[1]] = -math.sin(phi)
+    P[index[1]][index[0]] = math.sin(phi)
+
+    return P
