@@ -12,7 +12,7 @@ def run():
   list_of_points = []
   for i in range(n):
     x, y = map(float, input("Par de pontos X e Y: ").split())
-    list.append(x,y)
+    list.append([x,y])
 
   xp = float(input('Coordenada do ponto que se deseja calcular o valor de y: '))
   Solution = icod_map[icod]
@@ -25,5 +25,5 @@ def run():
   output_file_path = input('Arquivo de saída: ')
 
   with open(output_file_path, 'w') as output_file:
-    output_file.write(f"Autovetor: {solution['vector']}\n")
+    output_file.write(f"Valor de y: {solution}\n")
   print("Arquivo de saída gerado com sucesso!")

@@ -29,7 +29,7 @@ class JacobiMethod(Solution):
             print('Determinante:', determinant)
                 
         return {
-        'vectors': X,
-        'eigenvalues': values,
+        'vector': X,
+        'eigenvalue': values,
         'determinant': determinant
     }
