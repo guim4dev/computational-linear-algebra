@@ -7,7 +7,7 @@ class Interpolation(Solution):
             p = 1
             for j in range(self.n):
                 if i != j:
-                    p = p * (self.xp - self.list_of_points[j][0] / self.list_of_points[i][0] - self.list_of_points[j][0]) # x -xi / xi - xj
+                    p = p * (self.xp - self.list_of_points[j][0]) / (self.list_of_points[i][0] - self.list_of_points[j][0]) # x - xi / xi - xj
             
             yp = yp + p * self.list_of_points[i][1] #yp + p * yi
 
