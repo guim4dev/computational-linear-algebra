@@ -14,10 +14,11 @@ def run():
     x, y = map(float, input("Par de pontos X e Y: ").split())
     list.append(x,y)
 
+  xp = float(input('Coordenada do ponto que se deseja calcular o valor de y: '))
   Solution = icod_map[icod]
 
   solution = Solution(
-    list_of_points=list_of_points).solve()
+    n=n, list_of_points=list_of_points, xp=xp).solve()
   
   print(solution)
 
