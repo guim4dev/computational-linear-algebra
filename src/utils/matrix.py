@@ -199,3 +199,18 @@ def calculate_p_matrix(matrix, index):
     P[index[1]][index[0]] = math.sin(phi)
 
     return P
+
+
+def diagonal_dominant(matrix):
+    for i in range(len(matrix)):
+        lines_summation = 0
+        columns_summation = 0
+        for j in range(len(matrix)):
+            if (i != j):
+                lines_summation += math.fabs(matrix[i][j])
+                columns_summation += math.fabs(matrix[j][i])
+
+        if(matrix[i][i] < lines_summation or matrix[i][i] < columns_summation):
+            return False
+
+    return True

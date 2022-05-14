@@ -22,7 +22,7 @@ def run():
   idet = int(input('IDET: '))
   Solution = icod_map[icod]
   max_tolerance = None
-  if type(Solution) == IterativeSolution:
+  if issubclass(Solution, IterativeSolution):
     max_tolerance = float(input('Valor de tolerância máxima:'))
 
   output_file_path = input('Arquivo de saída: ')
@@ -35,11 +35,13 @@ def run():
     B=vector_B,
     order=order,
     calc_determinant=idet>0,
-    max_tolerance=max_tolerance).solve()
+    maxTolerance=max_tolerance).solve()
   print(solution)
 
   with open(output_file_path, 'w') as output_file:
     output_file.write(f"Vetor Solução: {solution['vector']}\n")
-    output_file.write(f"Determinante: {solution['determinant']}\n")
+    output_file.write(f"Determinante: {solution.get('determinant', 'N/A')}\n")
+    output_file.write(f"Número de iterações para convergência: {solution.get('numberOfIterations', 'N/A')}\n")
+    output_file.write(f"Variação do erro nas iterações: {solution.get('residues', 'N/A')}\n")
   
   print("Arquivo de saída gerado com sucesso!")
