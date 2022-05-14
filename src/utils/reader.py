@@ -3,7 +3,7 @@ def getMatrixA(file_path):
   with open(file_path, 'r') as file:
     lines = file.readlines()
     for line in lines:
-      new_line = line.split(' ')
+      new_line = line.replace('\n', '').split(' ')
       new_line = [float(x) for x in new_line]
       matrixA.append(new_line)
 

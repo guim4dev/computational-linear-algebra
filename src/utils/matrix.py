@@ -163,6 +163,7 @@ def get_main_minor(matrix, index):
                for row in range(index + 1)] for column in range(index + 1)]
     return result
 
+
 def get_biggest_element_not_in_diagonal(matrix):
     n = len(matrix)
     if (n != len(matrix[0])):
@@ -174,6 +175,7 @@ def get_biggest_element_not_in_diagonal(matrix):
                 value = abs(matrix[i][j])
                 index = (i,j)
     return index
+
 
 def calcute_phi(matrix, index):
     den = (matrix[index[0]][index[0]] -
@@ -214,3 +216,14 @@ def diagonal_dominant(matrix):
             return False
 
     return True
+
+
+def vector_multiplication(vector_a, vector_b):
+    result = 0
+
+    for i in range(len(vector_a)):
+        for j in range(len(vector_b)):
+            if (i == j):
+                result += vector_a[i]*vector_b[i]
+
+    return result

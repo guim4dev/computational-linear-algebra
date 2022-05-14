@@ -4,14 +4,14 @@ import copy
 class JacobiSolution(IterativeSolution):
   def solve(self):
     if (not diagonal_dominant(self.A)):
-        raise ValueError("A matriz A não converge.")
+      raise ValueError("A matriz A não converge.")
 
-    solution = [0.0 for _ in range(self.order)]
+    solution = [1 for _ in range(self.order)]
     previous_solution = copy.deepcopy(solution)
     residues = [1]
     # residue starts at 1
     residue = 1
-    step = 0
+    steps = 0
 
     while (residue > self.maxTolerance):
       previous_solution = copy.deepcopy(solution)
@@ -22,20 +22,21 @@ class JacobiSolution(IterativeSolution):
 
         for k in range(self.order):
           if (i != k):
-              solution[i] += (-1)*(self.A[i][k] * previous_solution[k])
+            solution[i] += (-1)*(self.A[i][k] * previous_solution[k])
 
         solution[i] /= self.A[i][i]
 
       for i in range(self.order):
-          numerator += (solution[i]-previous_solution[i])**2
-          denominator += solution[i]**2
+        numerator += (solution[i]-previous_solution[i])**2
+        denominator += solution[i]**2
 
       residue = float(numerator**0.5)/(denominator**0.5)
       residues.append(residue)
-      step += 1
+      steps += 1
+      print(f"Fineshed iteration {steps}...")
 
     return {
       'vector': solution,
       'residues': residues,
-      'numberOfIterations': step
+      'numberOfIterations': steps
     }

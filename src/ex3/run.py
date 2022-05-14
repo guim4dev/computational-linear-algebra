@@ -1,5 +1,5 @@
-from ex3.solutions.interpolation import Interpolation
-from ex3.solutions.regression import Regression
+from src.ex3.solutions.interpolation import Interpolation
+from src.ex3.solutions.regression import Regression
 
 icod_map = {
   1: Interpolation,
