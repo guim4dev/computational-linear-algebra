@@ -1,2 +1,0 @@
-Vetor Solução: [1.5, 1.375, -1.0]
-Determinante: 4
