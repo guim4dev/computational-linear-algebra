@@ -1,4 +1,3 @@
-from tabnanny import check
 from src.ex2.solutions.solution import Solution
 from src.utils.matrix import is_simetric, get_biggest_element_not_in_diagonal, calculate_p_matrix, multiply_matrixes, transpose_matrix
 

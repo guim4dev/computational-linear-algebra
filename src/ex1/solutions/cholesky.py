@@ -1,9 +1,9 @@
 from src.ex1.solutions.solution import Solution
-from src.utils.matrix import calc_determinant, forward_substitution, backward_substitution, positive_definite, transpose_matrix
+from src.utils.matrix import forward_substitution, backward_substitution, positive_definite
 
 class CholeskySolution(Solution):
   def decompose(self):
-    L = [[0.0] * self.order for i in range(self.order)]
+    L = [[0.0] * self.order for _ in range(self.order)]
 
     for i in range(self.order):
       for j in range(i + 1):
@@ -14,20 +14,30 @@ class CholeskySolution(Solution):
           summation = sum(L[i][k]*L[j][k] for k in range(i))
           L[i][j] = (1.0/L[j][j])*(self.A[i][j]-summation)
       
+    # include transpose on the same matrix
+    for i in range(self.order):
+      for j in range(i + 1, self.order):
+        L[i][j] = L[j][i]
     return L
+  
+  def calc_cholesky_determinant(self):
+    det = 1
+    for i in range(self.order):
+      det = det*self.A[i][i]
+    return det*det ## as it is cholesky, the determinant must multiply itself (we're calculating 2 dets - one for each triangle matrix)
 
   def solve(self):
     if not positive_definite(self.A): raise ValueError("A matriz A não é positiva definida.")
 
-    determinant = None
+    self.A = self.decompose()
+    print(f"Decomposed Cholesky: {self.A}")
+    determinant = None 
     if self.calc_determinant:
-      determinant = calc_determinant(self.A)
+      determinant = self.calc_cholesky_determinant()
       print('Determinante:', determinant)
 
-    cholesky_matrix_L = self.decompose()
-    cholesky_matrix_U = transpose_matrix(cholesky_matrix_L) 
-    matrix_y = forward_substitution(cholesky_matrix_L, self.B, True)
+    matrix_y = forward_substitution(self.A, self.B, True)
     return {
-      'vector': backward_substitution(cholesky_matrix_U, matrix_y),
+      'vector': backward_substitution(self.A, matrix_y),
       'determinant': determinant
     }

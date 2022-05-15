@@ -1,5 +1,5 @@
 from src.ex1.solutions.solution import Solution
-from src.utils.matrix import calc_determinant, forward_substitution, backward_substitution
+from src.utils.matrix import forward_substitution, backward_substitution
 
 class LUSolution(Solution):
   def decompose(self):
