@@ -1,6 +1,6 @@
 from tabnanny import check
 from src.ex2.solutions.solution import Solution
-from src.utils.matrix import calc_determinant, is_simetric, get_biggest_element_not_in_diagonal, calculate_p_matrix, multiply_matrixes, transpose_matrix
+from src.utils.matrix import is_simetric, get_biggest_element_not_in_diagonal, calculate_p_matrix, multiply_matrixes, transpose_matrix
 
 class JacobiMethod(Solution):
     def solve(self):
@@ -22,11 +22,10 @@ class JacobiMethod(Solution):
         for i in range(self.order):
             values.append(self.A[i][i]) 
 
-
-        determinant = None
         if self.calc_determinant:
-            determinant = calc_determinant(self.A)
-            print('Determinante:', determinant)
+            determinant = 1
+            for v in values:
+                determinant *= v
                 
         return {
         'vector': X,

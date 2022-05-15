@@ -1,7 +1,8 @@
 from src.ex2.solutions.solution import Solution
-from src.utils.matrix import calc_determinant, multiply_matrix_vector
+from src.utils.matrix import multiply_matrix_vector
 
 class PowerMethod(Solution):
+    can_calc_determinant = False
     def solve(self):
         X = [1] * self.order
 
@@ -26,14 +27,8 @@ class PowerMethod(Solution):
 
             X = Y
             r = abs(value-old_value) / abs(value)
-
-        determinant = None
-        if self.calc_determinant:
-            determinant = calc_determinant(self.A)
-            print('Determinante:', determinant)
                 
         return {
         'vector': X,
         'eigenvalue': value,
-        'determinant': determinant
     }

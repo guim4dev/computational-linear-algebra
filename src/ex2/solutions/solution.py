@@ -7,7 +7,7 @@ class Solution:
     self.calc_determinant = calc_determinant
     self.maxTolerance = maxTolerance
     if self.calc_determinant and not self.can_calc_determinant:
-      print('WARNING: Essa decomposição não permite o cálculo da determinante.')
+      print('WARNING: Esse método não permite o cálculo da determinante.')
 
   def solve(self):
     raise RuntimeError('Not implemented')

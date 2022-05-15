@@ -31,5 +31,5 @@ def run():
   with open(output_file_path, 'w') as output_file:
     output_file.write(f"Autovetor: {solution['vector']}\n")
     output_file.write(f"Autovalor: {solution['eigenvalue']}\n")
-    output_file.write(f"Determinante: {solution['determinant']}")
+    output_file.write(f"Determinante: {solution.get('determinant', 'N/A')}")
   print("Arquivo de saída gerado com sucesso!")
