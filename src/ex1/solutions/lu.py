@@ -1,35 +1,35 @@
 from src.ex1.solutions.solution import Solution
-from src.utils.matrix import calc_determinant, forward_substitution, backward_substitution, transpose_matrix
-import copy
+from src.utils.matrix import calc_determinant, forward_substitution, backward_substitution
 
 class LUSolution(Solution):
   def decompose(self):
-    number_of_rows = len(self.A)
-    number_of_columns = len(self.A[0])
-    result = copy.deepcopy(self.A)
-
-    for k in range(number_of_rows):
+    for k in range(self.order):
       # parte L da matriz
-      for i in range(k+1, number_of_rows):
-        result[i][k] = float(result[i][k]/result[k][k])
+      for i in range(k+1, self.order):
+        self.A[i][k] = float(self.A[i][k]/self.A[k][k])
 
       # parte U da matriz
-      for j in range(k+1, number_of_columns):
-        for i in range(k+1, number_of_columns):
-          result[i][j] = float(result[i][j]-result[i][k]*result[k][j])
-    return result
+      for j in range(k+1, self.order):
+        for i in range(k+1, self.order):
+          self.A[i][j] = float(self.A[i][j]-self.A[i][k]*self.A[k][j])
+    return self.A
+
+  def calc_lu_determinant(self):
+    det = 1
+    for i in range(self.order):
+      det = det*self.A[i][i]
+    return det
 
   def solve(self):
+    self.decompose()
+    print(f"Decomposed LU: {self.A}")
     determinant = None
     if self.calc_determinant:
-      determinant = calc_determinant(self.A) # Mudar para usar as propriedades da matriz LU
+      determinant = self.calc_lu_determinant()
       print('Determinante:', determinant)
 
-    lu_matrix = self.decompose()
-    matrix_y = forward_substitution(lu_matrix, self.B)
+    matrix_y = forward_substitution(self.A, self.B)
     return {
-      'vector': backward_substitution(lu_matrix, matrix_y),
+      'vector': backward_substitution(self.A, matrix_y),
       'determinant': determinant
     }
-
-    

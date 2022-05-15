@@ -1,0 +1,4 @@
+Vetor Solução: [1.0, 0.0, -1.0]
+Determinante: 1.0
+Número de iterações para convergência: N/A
+Variação do erro nas iterações: N/A
