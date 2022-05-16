@@ -21,10 +21,13 @@ class JacobiMethod(Solution):
         for i in range(self.order):
             values.append(self.A[i][i]) 
 
+        determinant = None
         if self.calc_determinant:
             determinant = 1
             for v in values:
                 determinant *= v
+        
+        X = transpose_matrix(X) #autovetores estão nas colunas
                 
         return {
         'vector': X,
