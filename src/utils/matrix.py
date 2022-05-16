@@ -83,11 +83,11 @@ def inverse_matrix(matrix):
     return cofactors
 
 
-def forward_substitution(matrix_l, vector_b, control=False):
+def forward_substitution(matrix_l, vector_b, isCholesky=False):
     number_of_rows = len(matrix_l)
     vector_y = [0 for _ in range(number_of_rows)]
     vector_y[0] = vector_b[0]
-    if control: vector_y[0] = vector_y[0]/matrix_l[0][0]
+    if isCholesky: vector_y[0] = vector_y[0]/matrix_l[0][0]
 
     for i in range(1, number_of_rows):
         summation = vector_b[i]
@@ -95,7 +95,7 @@ def forward_substitution(matrix_l, vector_b, control=False):
             summation -= matrix_l[i][j]*vector_y[j]
 
         vector_y[i] = summation
-        if control: vector_y[i] = vector_y[i]/matrix_l[i][i]
+        if isCholesky: vector_y[i] = vector_y[i]/matrix_l[i][i]
 
     return vector_y
 
