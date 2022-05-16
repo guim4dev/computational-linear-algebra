@@ -150,14 +150,14 @@ def is_simetric(matrix):
 
 def follows_sylvesters_criterion(matrix):
     for i in range(len(matrix)):
-        secondary = get_main_minor(matrix, i)
+        secondary = get_submatrix(matrix, i)
         if(calc_determinant(secondary) <= 0):
             return False
 
     return True
 
 
-def get_main_minor(matrix, index):
+def get_submatrix(matrix, index):
     result = [[matrix[row][column]
                for row in range(index + 1)] for column in range(index + 1)]
     return result
