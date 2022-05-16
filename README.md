@@ -5,12 +5,14 @@ Exercises for the Computational Linear Algebra lecture at UFRJ, 2022/1
 
 
 O projeto é feito de forma a modularizar e tornar tudo que foi utilizado reutilizável.
+```
 -- src
     |_ex1
     |_ex2
     |_ex3
     |_...
-    |_utils 
+    |_utils
+```
 
 Assim, o que tiver sido desenvolvido no trabalho 1, por exemplo, pode ser utilizado por outros trabalhos, fora a existência do módulos utils, que contém funcionalidades que serão utilizadas amplamente por diversos trabalhos.
 
