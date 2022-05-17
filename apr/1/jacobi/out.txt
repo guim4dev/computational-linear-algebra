@@ -1,0 +1,1 @@
+ ValueError: A matriz A não converge. (não é diagonal dominante)
