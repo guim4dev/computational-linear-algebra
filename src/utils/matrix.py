@@ -226,3 +226,14 @@ def vector_multiplication(vector_a, vector_b):
                 result += vector_a[i]*vector_b[i]
 
     return result
+
+def subtract_vector(vector_a, vector_b):
+    if len(vector_a) != len(vector_b):
+        raise Exception ("Vetores devem possuir o mesmo tamanho!")
+
+    n = len(vector_a)
+    result = []
+    for i in range(n):
+        result.append(vector_a[i] - vector_b[i])
+            
+    return result
