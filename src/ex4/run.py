@@ -12,12 +12,11 @@ def run():
   t1 = float(input('t1: '))
   t2 = float(input('t2: '))
   maxTolerance = float(input('maxTolerance: '))
-  maxIter = int(input('maxIter: '))
 
   Solution = icod_map[icod]
 
   solution = Solution(
-    t1=t1, t2=t2, maxTolerance=maxTolerance, maxIter=maxIter).solve()
+    t1=t1, t2=t2, maxTolerance=maxTolerance).solve()
   
   print(solution)
 

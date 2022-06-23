@@ -3,8 +3,9 @@ from src.utils.matrix import inverse_matrix, multiply_matrix_vector, norm_vector
 
 class NewtonMethod(Solution):
     def solve(self):
-        X = [1,1,1]
-        for k in range(self.maxIter):
+        MAX_ITER = 100000
+        X = [1,0,0]
+        for k in range(MAX_ITER):
             J = self.Jacobian(X)
             Y = self.F(X)
             dx = multiply_matrix_vector(inverse_matrix(J), Y)

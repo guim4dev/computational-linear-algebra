@@ -1,10 +1,9 @@
 class Solution:
 
-    def __init__(self, t1, t2, maxTolerance, maxIter, **kwargs):
+    def __init__(self, t1, t2, maxTolerance, **kwargs):
         self.t1 = t1
         self.t2 = t2
         self.maxTolerance = maxTolerance
-        self.maxIter = maxIter
 
     def solve(self):
         raise RuntimeError('Not implemented')
