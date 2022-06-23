@@ -237,3 +237,9 @@ def subtract_vector(vector_a, vector_b):
         result.append(vector_a[i] - vector_b[i])
             
     return result
+
+def norm_vector(vector_a):
+    s = 0
+    for n in vector_a:
+        s += n**2
+    return math.sqrt(s)
