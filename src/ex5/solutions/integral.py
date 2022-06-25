@@ -1,5 +1,5 @@
 from src.ex5.solutions.solution import Solution
-from src.ex5.quadratures import get_polynomial_quadrature
+from src.ex5.utils.quadratures import get_polynomial_quadrature
 
 class Integral(Solution):
   def __init__(self, c1, c2, c3, c4, **kwargs):
