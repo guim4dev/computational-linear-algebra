@@ -1,5 +1,6 @@
 from src.ex5.solutions.root import Root
 from src.ex5.solutions.integral import Integral
+from src.ex5.solutions.derivative import Derivative
 
 icod_map = {
   1: Root,
