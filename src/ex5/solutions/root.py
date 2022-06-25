@@ -3,8 +3,8 @@ from src.ex5.solutions.solution import Solution
 class Root(Solution):
   def __init__(self, c1, c2, c3, c4, **kwargs):
     super().__init__(c1, c2, c3, c4, **kwargs)
-    self.a = int(input('a: '))
-    self.b = int(input('b: '))
+    self.a = float(input('a: '))
+    self.b = float(input('b: '))
     self.chosen_method = int(input('Escolha um método - 1 para Bisseção; 2 para Newton: '))
     if self.chosen_method not in [1, 2]:
       raise RuntimeError('Método inválido.')

@@ -1,13 +1,11 @@
 from src.ex5.solutions.solution import Solution
-from src.ex5.utils.polynomial_quadrature import get_polynomial_quadrature
-from src.ex5.utils.gauss_quadrature import get_gauss_legendre_quadrature
 
 class Derivative(Solution):
-  def __init__(self, c1, c2, c3, c4, **kwargs):
+  def __init__(self, c1, c2, c3, c4, delta_x=None, point=None, chosen_method=None, **kwargs):
     super().__init__(c1, c2, c3, c4, **kwargs)
-    self.delta_x = float(input('delta_x: '))
-    self.point = int(input('Ponto para derivação: '))
-    self.chosen_method = int(input('Escolha um método - 1 para Diferenças Finitas passo a frente; 2 para Diferenças Finitas passo atrás; 3 para Diferença Central: '))
+    self.delta_x = delta_x or float(input('delta_x: '))
+    self.point = point or float(input('Ponto para derivação: '))
+    self.chosen_method = chosen_method or int(input('Escolha um método - 1 para Diferenças Finitas passo a frente; 2 para Diferenças Finitas passo atrás; 3 para Diferença Central: '))
     if self.chosen_method not in [1, 2, 3]:
       raise RuntimeError('Método inválido.')
 
