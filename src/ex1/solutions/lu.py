@@ -22,7 +22,6 @@ class LUSolution(Solution):
 
   def solve(self):
     self.decompose()
-    print(f"Decomposed LU: {self.A}")
     determinant = None
     if self.calc_determinant:
       determinant = self.calc_lu_determinant()
