@@ -3,6 +3,7 @@ from src.ex2.run import run as ex2_run
 from src.ex3.run import run as ex3_run
 from src.ex4.run import run as ex4_run
 from src.ex5.run import run as ex5_run
+from src.ex6.run import run as ex6_run
 
 ex_map = {
   1: ex1_run,
@@ -10,6 +11,7 @@ ex_map = {
   3: ex3_run,
   4: ex4_run,
   5: ex5_run,
+  6: ex6_run,
 }
 
 if __name__ == '__main__':
