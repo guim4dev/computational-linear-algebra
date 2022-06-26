@@ -19,7 +19,7 @@ def run():
 
   running = True
   while(running):
-    print('Por favor, escolha o ICOD referente à operação que deseja utilizar.')
+    print('\nPor favor, escolha o ICOD referente à operação que deseja utilizar.')
     print('1: Encontrar a raíz da função \n2: Integrar a função \n3: Calcular a derivada em um ponto \n4: Calcular a derivada em um ponto usando a regra de extrapolação de Richard')
     icod = int(input('ICOD: '))
     Solution = icod_map[icod]

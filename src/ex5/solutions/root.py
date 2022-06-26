@@ -15,8 +15,10 @@ class Root(Solution):
   def bisection(self):
     current_x = 0 
     number_of_iterations = 0
-    while abs(self.a - self.b) > self.maxTolerance:
+    while (True):
       current_x = (self.a + self.b) / 2
+      if abs(self.a - self.b) <= self.maxTolerance: break
+
       if self.F(current_x) > 0:
         self.b = current_x
       else:
