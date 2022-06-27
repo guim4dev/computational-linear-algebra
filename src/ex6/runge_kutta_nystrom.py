@@ -16,7 +16,8 @@ class RungeKuttaNystrom:
     self.number_of_steps = int(total_time / step)
   
   def F(self, t):
-    return self.a1*np.sin(self.w1*t) + self.a2*np.sin(self.w2*t) + self.a3*np.cos(self.w3*t)
+    t_as_radians = t * np.pi / 180
+    return self.a1*np.sin(self.w1*t_as_radians) + self.a2*np.sin(self.w2*t_as_radians) + self.a3*np.cos(self.w3*t_as_radians)
   
   def F_derivative(self, t, x, dx):
     return (self.F(t) - self.c*dx - self.k*x)/self.m

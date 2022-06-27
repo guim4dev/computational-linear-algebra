@@ -10,7 +10,7 @@ def run():
     switcher = int(input('Deseja rodar o teste pré-configurado? 1 para sim, 2 para não: '))
     if switcher == 1:
         m = 1
-        c = 0
+        c = 0.1
         k = 2
         a1 = 1
         a2 = 2
