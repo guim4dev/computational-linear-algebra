@@ -238,8 +238,44 @@ def subtract_vector(vector_a, vector_b):
             
     return result
 
+def add_vector(vector_a, vector_b):
+    if len(vector_a) != len(vector_b):
+        raise Exception ("Vetores devem possuir o mesmo tamanho!")
+
+    n = len(vector_a)
+    result = []
+    for i in range(n):
+        result.append(vector_a[i] + vector_b[i])
+            
+    return result
+
+def add_matrixes(matrix_a, matrix_b):
+    if len(matrix_a) != len(matrix_b):
+        raise Exception ("Matrizes devem possuir o mesmo tamanho!")
+    
+    result = []
+    for i in range(matrix_a):
+        result.append(add_vector(matrix_a[i], matrix_b[i]))
+
+    return result
+
 def norm_vector(vector_a):
     s = 0
     for n in vector_a:
         s += n**2
     return math.sqrt(s)
+
+def multiply_vectors(vector_a, vector_b):
+    if len(vector_a) != len(vector_b):
+        raise Exception ("Vetores devem possuir o mesmo tamanho!")
+    
+    result = 0
+    for i in range(len(vector_a)):
+        result += vector_a[i]*vector_b[i]
+    return result
+
+def transpose_vector(vector_a):
+    v = []
+    for i in range(len(vector_a)):
+        v.append([vector_a[i]])
+    return v
