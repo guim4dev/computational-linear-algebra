@@ -26,7 +26,9 @@ def run():
 
     output_file_path = input('Arquivo de saída: ')
     solution = Solution(c1=c1, c2=c2, c3=c3, c4=c4).solve()
-    print(solution)
+    print("Tarefa: ", icod)
+    print("Constantes: c1 = ", c1, " c2 = ", c2, " c3 = ", c3, " c4 = ", c4)
+    print("Solução: ", solution)
 
     with open(output_file_path, 'w') as output_file:
       output_file.write(f"Solução: {solution}")
