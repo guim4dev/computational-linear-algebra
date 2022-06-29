@@ -253,9 +253,11 @@ def add_matrixes(matrix_a, matrix_b):
     if len(matrix_a) != len(matrix_b):
         raise Exception ("Matrizes devem possuir o mesmo tamanho!")
     
-    result = []
-    for i in range(matrix_a):
-        result.append(add_vector(matrix_a[i], matrix_b[i]))
+    m = len(matrix_a)
+    result = [[0.0 for _ in range(m)] for _ in range(m)]
+    for i in range(m):
+        for j in range(m):
+            result[i][j] = matrix_a[i][j] + matrix_b[i][j]
 
     return result
 
@@ -265,7 +267,7 @@ def norm_vector(vector_a):
         s += n**2
     return math.sqrt(s)
 
-def multiply_vectors(vector_a, vector_b):
+def dot_product(vector_a, vector_b):
     if len(vector_a) != len(vector_b):
         raise Exception ("Vetores devem possuir o mesmo tamanho!")
     
@@ -274,8 +276,10 @@ def multiply_vectors(vector_a, vector_b):
         result += vector_a[i]*vector_b[i]
     return result
 
-def transpose_vector(vector_a):
-    v = []
-    for i in range(len(vector_a)):
-        v.append([vector_a[i]])
-    return v
+def outer_product(vector_a, vector_b):
+    m = len(vector_a)
+    result = [[0.0 for i in range(m)] for j in range(m)]
+    for i in range(m):
+        for j in range(m):
+            result[i][j] = vector_a[i]*vector_b[j]
+    return result
